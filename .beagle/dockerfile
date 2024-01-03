@@ -1,0 +1,16 @@
+ARG BASE
+
+FROM $BASE
+
+ARG AUTHOR
+ARG VERSION
+LABEL maintainer=$AUTHOR version=$VERSION
+
+ARG TARGETOS
+ARG TARGETARCH
+
+COPY ./movie_data_rename-$TARGETOS-$TARGETARCH /bin/movie_data_rename
+
+ENV MOVIE_SOURCE=/data
+
+ENTRYPOINT ["/bin/movie_data_rename"]
