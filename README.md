@@ -39,3 +39,11 @@ docker run --rm \
   -w $(pwd) \
   registry.cn-qingdao.aliyuncs.com/wod/devops-s3-cache:1.0
 ```
+
+## debug
+
+```bash
+docker run -it --rm \
+-v $PWD/.tmp:/data \
+registry.cn-qingdao.aliyuncs.com/wod/movie_data_rename:v1.0.0
+```

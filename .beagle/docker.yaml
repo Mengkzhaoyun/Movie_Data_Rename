@@ -1,0 +1,7 @@
+version: "3"
+services:
+  rename:
+    image: registry.cn-qingdao.aliyuncs.com/wod/movie_data_rename:v1.0.0
+    restart: "no"
+    volumes:
+      - /share/CACHEDEV1_DATA/Public/迅雷/下载:/data
