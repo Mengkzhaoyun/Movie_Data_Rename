@@ -43,14 +43,23 @@ func IsVedio(path string) bool {
 	if strings.HasSuffix(path, ".avi") {
 		return true
 	}
+	if strings.HasSuffix(path, ".mkv") {
+		return true
+	}
 	return false
 }
 
 func IsNumber(path string) bool {
+	if strings.HasSuffix(strings.ToLower(path), "-l") {
+		return true
+	}
 	if strings.HasSuffix(strings.ToLower(path), "-u") {
 		return true
 	}
 	if strings.HasSuffix(strings.ToLower(path), "-c") {
+		return true
+	}
+	if strings.HasSuffix(strings.ToLower(path), "-lc") {
 		return true
 	}
 	if strings.HasSuffix(strings.ToLower(path), "-uc") {
