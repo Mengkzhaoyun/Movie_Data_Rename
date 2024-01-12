@@ -27,9 +27,19 @@ func main() {
 		sFileName := strings.TrimSuffix(sFullFileName, sFileExt)
 		if len(dirname) == len(Source) {
 
-			// ssis-741_000 SSIS-933_000
-			re := regexp.MustCompile(`^([A-Za-z]{2,5})-([0-9]{3})_000.*`)
+			// SNIS-009_000^WM_4K.mp4
+			re := regexp.MustCompile(`^([A-Za-z]{2,5})-([0-9]{3})_000\SWM_4K`)
 			parts := re.FindStringSubmatch(sFileName)
+			if len(parts) > 2 {
+				sNewFullFileName := fmt.Sprintf("%s-%s-4K-U%s", strings.ToUpper(parts[1]), parts[2], sFileExt)
+				sNewPath := filepath.Join(dirname, sNewFullFileName)
+				os.Rename(sPath, sNewPath)
+				continue
+			}
+
+			// ssis-741_000 SSIS-933_000
+			re = regexp.MustCompile(`^([A-Za-z]{2,5})-([0-9]{3})_000.*`)
+			parts = re.FindStringSubmatch(sFileName)
 			if len(parts) > 2 {
 				sNewFullFileName := fmt.Sprintf("%s-%s-U%s", strings.ToUpper(parts[1]), parts[2], sFileExt)
 				sNewPath := filepath.Join(dirname, sNewFullFileName)
