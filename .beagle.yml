@@ -50,7 +50,7 @@ steps:
       base: registry.cn-qingdao.aliyuncs.com/wod/alpine:3-amd64
       cwd: release
       repo: wod/movie_data_rename
-      version: v1.0.0
+      version: v1.0.1
       channel: amd64
       args: 'TARGETOS=linux,TARGETARCH=amd64'
       registry: registry.cn-qingdao.aliyuncs.com
@@ -69,7 +69,7 @@ steps:
       base: registry.cn-qingdao.aliyuncs.com/wod/alpine:3-arm64
       cwd: release
       repo: wod/movie_data_rename
-      version: v1.0.0
+      version: v1.0.1
       channel: arm64
       args: 'TARGETOS=linux,TARGETARCH=arm64'
       registry: registry.cn-qingdao.aliyuncs.com
@@ -82,8 +82,8 @@ steps:
     image: registry.cn-qingdao.aliyuncs.com/wod/devops-docker-manifest:1.0
     settings:
       platforms: linux/amd64,linux/arm64
-      template: registry.cn-qingdao.aliyuncs.com/wod/movie_data_rename:v1.0.0-ARCH
-      target: registry.cn-qingdao.aliyuncs.com/wod/movie_data_rename:v1.0.0
+      template: registry.cn-qingdao.aliyuncs.com/wod/movie_data_rename:v1.0.1-ARCH
+      target: registry.cn-qingdao.aliyuncs.com/wod/movie_data_rename:v1.0.1
       username:
         from_secret: REGISTRY_USER_ALIYUN
       password:

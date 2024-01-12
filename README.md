@@ -45,5 +45,5 @@ docker run --rm \
 ```bash
 docker run -it --rm \
 -v $PWD/.tmp:/data \
-registry.cn-qingdao.aliyuncs.com/wod/movie_data_rename:v1.0.0
+registry.cn-qingdao.aliyuncs.com/wod/movie_data_rename:v1.0.1
 ```

@@ -15,9 +15,9 @@ func Movie_list(root string) []string {
 		log.Printf("Source Dir is not exist.: %s", root)
 	}
 
-	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
-		if IsVedio(path) && !info.IsDir() {
-			result = append(result, path)
+	err := filepath.Walk(root, func(sPath string, info os.FileInfo, err error) error {
+		if IsVedio(sPath) && !info.IsDir() {
+			result = append(result, sPath)
 		}
 		return nil
 	})
@@ -28,41 +28,41 @@ func Movie_list(root string) []string {
 	return result
 }
 
-func IsDir(path string) bool {
-	s, err := os.Stat(path)
+func IsDir(sPath string) bool {
+	s, err := os.Stat(sPath)
 	if err != nil {
 		return false
 	}
 	return s.IsDir()
 }
 
-func IsVedio(path string) bool {
-	if strings.HasSuffix(path, ".mp4") {
+func IsVedio(sPath string) bool {
+	if filepath.Ext(sPath) == ".mp4" {
 		return true
 	}
-	if strings.HasSuffix(path, ".avi") {
+	if filepath.Ext(sPath) == ".avi" {
 		return true
 	}
-	if strings.HasSuffix(path, ".mkv") {
+	if filepath.Ext(sPath) == ".mkv" {
 		return true
 	}
 	return false
 }
 
-func IsNumber(path string) bool {
-	if strings.HasSuffix(strings.ToLower(path), "-l") {
+func IsNumber(sPath string) bool {
+	if strings.HasSuffix(strings.ToLower(sPath), "-l") {
 		return true
 	}
-	if strings.HasSuffix(strings.ToLower(path), "-u") {
+	if strings.HasSuffix(strings.ToLower(sPath), "-u") {
 		return true
 	}
-	if strings.HasSuffix(strings.ToLower(path), "-c") {
+	if strings.HasSuffix(strings.ToLower(sPath), "-c") {
 		return true
 	}
-	if strings.HasSuffix(strings.ToLower(path), "-lc") {
+	if strings.HasSuffix(strings.ToLower(sPath), "-lc") {
 		return true
 	}
-	if strings.HasSuffix(strings.ToLower(path), "-uc") {
+	if strings.HasSuffix(strings.ToLower(sPath), "-uc") {
 		return true
 	}
 	return false
